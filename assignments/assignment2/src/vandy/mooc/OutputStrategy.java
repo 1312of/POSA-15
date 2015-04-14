@@ -2,6 +2,7 @@ package vandy.mooc;
 
 import java.lang.ref.WeakReference;
 
+import android.os.Handler;
 import android.util.Log;
 
 /**
@@ -35,6 +36,7 @@ public class OutputStrategy {
         // another Thread that sleeps for 0.5 seconds to let the user
         // see what's going on.
         // @@ TODO - you fill in here.
+        mOuterClass.get().print(outputString + "\n");
     }
 
     /**
