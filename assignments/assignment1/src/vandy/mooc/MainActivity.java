@@ -78,7 +78,7 @@ public class MainActivity extends LifecycleLoggingActivity {
 
     /**
      * Called by the Android Activity framework when the user clicks
-     * the "Find Address" button.
+     * the "Download Image" button.
      *
      * @param view The view.
      */
