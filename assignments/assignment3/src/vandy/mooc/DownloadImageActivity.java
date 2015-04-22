@@ -78,7 +78,6 @@ public class DownloadImageActivity extends Activity {
                  new FilterImageTask().execute(result);
             } else {
                 Intent intent = getIntent();
-                intent.putExtra(EXTRA_PATH, result.toString());
                 setResult(RESULT_CANCELED, intent);
                 finish();
             }
