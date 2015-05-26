@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Message;
+import android.text.TextUtils;
 
 /**
  * A thin facade around an Android Message that defines the schema of
@@ -40,24 +41,31 @@ public class ReplyMessage extends RequestReplyMessageBase {
 
         // Create a new Bundle to handle the result.
         // TODO -- you fill in here.
-
+        Bundle bundle = new Bundle();    
         // Set the Bundle to be the data in the message.
         // TODO -- you fill in here.
-
+        replyMessage.setData(bundle);
         // Put the URL to the image file into the Bundle
         // TODO -- you fill in here.
-
+        bundle.putString(IMAGE_URL, url.toString());
         // Put the requestCode into the Bundle
         // TODO -- you fill in here.
-
+        bundle.putInt(REQUEST_CODE, requestCode);
         // Set the result code to indicate whether the download
         // succeeded or failed.
         // TODO -- you fill in here.
-
+        int resultCode = Activity.RESULT_OK;
+        if (pathToImageFile == null || TextUtils.isEmpty(pathToImageFile.getPath())) {
+            resultCode = Activity.RESULT_CANCELED;
+        }
+        replyMessage.mMessage.arg1 = resultCode;
         // Put the path to the image file into the Bundle
         // only if the download succeeded.
         // TODO -- you fill in here.
-
+        if (pathToImageFile != null && !TextUtils.isEmpty(pathToImageFile.getPath())) {
+            bundle.putString(IMAGE_PATHNAME, pathToImageFile.getPath());
+        }
+        replyMessage.setData(bundle);
         return replyMessage;
     }
 }
